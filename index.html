@@ -3,26 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
   
-  
+  <div class="container">
+    <div class="logo">
+      <img src="logopagina.png" alt="logo">
+
+ 
+  </div>
   
 <!-- Botones de Iniciar Sesión y Registrarse -->
 <div class="botones">
+  <p class="Identificate">Identificate</p>
   <button id="btnIniciarSesion" onclick="abrirModalIniciarSesion('iniciarSesion')">Iniciar Sesión</button>
   <button id="btnRegistrarse" onclick="abrirModalRegistrarse('registrarse')">Registrarse</button>
 
 
 </div>
+  </div>
 
 <!-- Modal de Inicio de Sesión -->
 <div id="modalIniciarSesion" class="modal">
   <div class="modal-content">
     <span class="close" onclick="cerrarModalIniciarSesion()">&times;</span>
     <h2>Iniciar Sesión</h2>
-    <form action="login.html" method="POST" class="formulario__login" onsubmit="procesarInicioSesion(); return false;">
+    <form action="login.php" method="POST" class="formulario__login" onsubmit="procesarInicioSesion(); return false;">
       <label for="username">Correo electrónico:</label><br>
       <input type="text" id="username" name="correo"><br>
       <label for="password">Contraseña:</label><br>

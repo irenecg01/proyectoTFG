@@ -34,3 +34,4 @@ function mostrarMedicamentos(horario) {
 
 // Llamar a la función para mostrar todos los medicamentos al cargar la página
 mostrarMedicamentos('todos');
+

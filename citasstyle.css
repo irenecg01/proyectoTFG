@@ -28,13 +28,14 @@
   
   .botones button {
     padding: 10px 20px;
-    background-color: #4caf50;
+    background-color: #92c5fc;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-  }
+}
+  
   
   .modal {
     display: none;
@@ -114,27 +115,27 @@
   }
 
   .editar-btn {
-    background-color: #4CAF50; /* Color de fondo */
-    color: white; /* Color de texto */
-    border: none; /* Sin borde */
-    padding: 8px 16px; /* Espaciado interno */
-    text-align: center; /* Alineación de texto */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Mostrar como elemento en línea */
-    font-size: 14px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambio de cursor al pasar el mouse */
+    background-color: #92c5fc; 
+    color: white; 
+    border: none; 
+    padding: 8px 16px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer; 
   }
   
   .borrar-btn {
     background-color: #f44336; /* Color de fondo */
     color: white; /* Color de texto */
-    border: none; /* Sin borde */
-    padding: 8px 16px; /* Espaciado interno */
-    text-align: center; /* Alineación de texto */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Mostrar como elemento en línea */
-    font-size: 14px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambio de cursor al pasar el mouse */
+    border: none; 
+    padding: 8px 16px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 14px; 
+    cursor: pointer;
   }
   .botones-cita {
     display: none;

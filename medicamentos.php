@@ -31,7 +31,7 @@
 
 <button onclick="mostrarMedicamentos('todos')">Mostrar Todo</button>
 
-<a href="login.html"><button type="button">Volver Atrás</button></a>
+<a href="login.php"><button type="button">Volver Atrás</button></a>
 <!-- Modal -->
 <div id="myModal" class="modal">
     <!-- Contenido del modal -->

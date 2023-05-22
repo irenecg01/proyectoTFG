@@ -3,8 +3,6 @@
 <head>
   <link rel="stylesheet" href="citasstyle.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -25,7 +23,7 @@
   <div class="botones">
     <button id="btnAgregarCita" onclick="abrirModalAgregar('Agregar')">Agregar Cita</button>
     <button id="btnEditar">Editar</button>
-    <a href="login.html"><button type="button">Volver Atrás</button></a>
+    <a href="login.php"><button type="button">Volver Atrás</button></a>
   </div>
 
   <!-- Modal de Agregar Cita -->
