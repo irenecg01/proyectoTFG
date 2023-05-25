@@ -1,3 +1,6 @@
+
+var filtroEspecialidad = 'todos';
+
 // Función para abrir el modal de agregar
 function abrirModalAgregar(tipo) {
   var modal = document.getElementById("modalAgregar");
@@ -24,6 +27,8 @@ function mostrarBotones() {
     }
   }
 }
+
+
 
 // Agregar evento click a los botones de borrar
 var botonesBorrar = document.getElementsByClassName("borrar-btn");
@@ -89,8 +94,6 @@ function obtenerListaCitas() {
       if (xhr.status === 200) {
         // Analizar la respuesta JSON
         var citas = JSON.parse(xhr.responseText);
-
-        // Aquí puedes realizar la lógica para actualizar la lista de citas en
       }
     }
   }
@@ -122,6 +125,7 @@ var botonesEspecialidad = document.getElementsByClassName("especialidad-btn");
 // Asignar el evento click a cada botón de especialidad
 for (var i = 0; i < botonesEspecialidad.length; i++) {
   botonesEspecialidad[i].addEventListener("click", filtrarCitasPorEspecialidad);
+  
 }
 
 
@@ -142,3 +146,21 @@ for (var i = 0; i < botonesEspecialidad.length; i++) {
   });
 
 
+  //MostrarCitas 
+  function mostrarCitas() {
+    var xhr = new XMLHttpRequest();
+    var url = 'obtenercitas.php';
+  
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          document.getElementById('lista-citas').innerHTML = xhr.responseText;
+        } else {
+          console.log('Error al cargar las citas.');
+        }
+      }
+    };
+    xhr.send();
+  }
+  

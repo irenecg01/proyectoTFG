@@ -66,8 +66,8 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
-    margin-top: -10px; /* Ajusta el margen superior del botón de cierre aquí */
-    margin-right: -10px; /* Ajusta el margen derecho del botón de cierre aquí */
+    margin-top: -10px; 
+    margin-right: -10px; 
   }
   
   .close:hover,

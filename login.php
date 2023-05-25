@@ -8,27 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=San+Francisco&display=swap" rel="stylesheet">
 
     <title>Document</title>
-    <style>
-       
-        /* Estilos para pantalla pequeña */
-        @media screen and (max-width: 480px) {
-            .botones {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
 
-            .notificaciones {
-                text-align: center;
-            }
-        }
-    </style>
-  
 </head>
 <body>
   <div class="botones">
     <a href="citaMedica.php">
-        <button id="Citamedica">Cita Médica</button>
+        <button id="Citamedica"  >Cita Médica</button>
       </a>
     
       <!-- Botón para Medicamentos -->

@@ -1,12 +1,12 @@
 <?php
 function obtenerColorHorario($horario) {
   $coloresHorarios = array(
-    'mañana' => '#FF0000', // Rojo
-    'mediodía' => '#00FF00', // Verde
-    'almuerzo' => '#0000FF', // Azul
-    'merienda' => '#FFFF00', // Amarillo
-    'cena' => '#FF00FF', // Magenta
-    'noche' => '#00FFFF' // Cian
+    'mañana' => '#FADBD8', 
+    'mediodía' => '#c4dafa', 
+    'almuerzo' => '#F9E79F ', 
+    'merienda' => '#F5EEF8 ', 
+    'cena' => '#D5F5E3', 
+    'noche' => '#F9E79F ' 
   );
 
   // Verificar si el horario existe en el arreglo de colores

@@ -3,10 +3,6 @@ include("conexion.php");
 
 if (isset($_POST['citaId'])) {
   $citaId = $_POST['citaId'];
-
-  // Realizar la lógica para borrar la cita utilizando el ID proporcionado
-  
-  // Por ejemplo, podrías ejecutar una consulta SQL DELETE para borrar la cita de la base de datos
   $query = "DELETE FROM citas WHERE id = $citaId";
   $result = $conn->query($query);
   if ($result) {

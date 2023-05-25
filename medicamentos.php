@@ -27,11 +27,14 @@
 <!-- Resto del contenido HTML -->
 
 <!-- Botón que abre el modal -->
-<button onclick="abrirModal()">Agregar Medicamento</button>
+<div class="boton-estilo">
+<button onclick="abrirModal()" >Agregar Medicamento</button>
 
 <button onclick="mostrarMedicamentos('todos')">Mostrar Todo</button>
 
 <a href="login.php"><button type="button">Volver Atrás</button></a>
+
+</div>
 <!-- Modal -->
 <div id="myModal" class="modal">
     <!-- Contenido del modal -->
@@ -70,10 +73,6 @@
         </form>
     </div>
 </div>
-
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
