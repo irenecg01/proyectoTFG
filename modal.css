@@ -81,7 +81,7 @@
 
 .medicamento__nombre {
   margin-bottom: 5px; /* Agrega un margen inferior para separar el horario */
-  color: white;
+  color: black;
 }
 
 .medicamento__horarios {

@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="citasstyle.css"> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-TCKrH/3itT9KaRpx7jVQe6sj5nJEo60lKU/dq5wzuc6wD6ez9v5djrTJKeXx8IW/" crossorigin="anonymous">
 
 
 </head>
@@ -12,7 +13,17 @@
   <h2>Mis Citas Médicas</h2>
   <!-- Lista de citas medicas -->
   <div id="lista-citas">
-    <?php include("lista_citas.php"); ?>
+      <?php
+      include("lista_citas.php");
+
+      // Obtener el parámetro especialidad de la URL
+      $especialidad = $_GET['especialidad'] ?? '';
+
+      // Mostrar solo las citas de la especialidad seleccionada
+      if (!empty($especialidad)) {
+        echo '<script>filtrarCitasPorEspecialidad("' . $especialidad . '");</script>';
+      }
+      ?>
   </div>
 </div>
 
@@ -44,8 +55,10 @@
         <option value="Traumatología ">
         <option value="Endocrinología">
         <option value="Oncología">
-        <option value="Endocrinología">
+        <option value="Endocrinología">  
+     
 </datalist>
+</div>
         <br>
         <label for="lugar">Lugar:</label>
         <input type="text" id="lugar" name="lugar" required>
@@ -63,6 +76,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="hola.js"></script>

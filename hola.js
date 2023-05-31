@@ -1,4 +1,3 @@
-
 var filtroEspecialidad = 'todos';
 
 // Función para abrir el modal de agregar
@@ -27,8 +26,6 @@ function mostrarBotones() {
     }
   }
 }
-
-
 
 // Agregar evento click a los botones de borrar
 var botonesBorrar = document.getElementsByClassName("borrar-btn");
@@ -87,80 +84,39 @@ function borrarCita(citaId) {
   xhr.send("citaId=" + citaId);
 }
 
-function obtenerListaCitas() {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        // Analizar la respuesta JSON
-        var citas = JSON.parse(xhr.responseText);
-      }
-    }
-  }
-}
-
-
-function filtrarCitasPorEspecialidad() {
-  var especialidadSeleccionada = this.getAttribute("data-especialidad"); // Obtener la especialidad seleccionada
-
-  // Obtener todas las citas
-  var citas = document.getElementsByClassName("cita");
-
-  // Iterar sobre todas las citas y mostrar/ocultar según la especialidad seleccionada
-  for (var i = 0; i < citas.length; i++) {
-    var especialidadCitaElement = citas[i].querySelector(".especialidad-btn");
-    var especialidadCita = especialidadCitaElement ? especialidadCitaElement.getAttribute("data-especialidad") : '';
-
-    if (especialidadCita === especialidadSeleccionada) {
-      citas[i].style.display = "block"; // Mostrar la cita si coincide con la especialidad seleccionada
-    } else {
-      citas[i].style.display = "none"; // Ocultar la cita si no coincide con la especialidad seleccionada
-    }
-  }
-}
-
 // Obtener todos los botones de especialidad
 var botonesEspecialidad = document.getElementsByClassName("especialidad-btn");
 
 // Asignar el evento click a cada botón de especialidad
 for (var i = 0; i < botonesEspecialidad.length; i++) {
   botonesEspecialidad[i].addEventListener("click", filtrarCitasPorEspecialidad);
-  
+}
+function filtrarCitasPorEspecialidad(especialidad) {
+  // Mostrar solo las citas de la especialidad seleccionada
+  var citas = document.getElementsByClassName("cita");
+  for (var i = 0; i < citas.length; i++) {
+    var citaEspecialidad = citas[i].querySelector(".cita__especialidad").textContent.trim();
+
+    if (citaEspecialidad === especialidad || especialidad === 'todos') {
+      citas[i].style.display = "block";
+    } else {
+      citas[i].style.display = "none";
+    }
+  }
+
+  // Actualizar la URL con el parámetro especialidad
+  var url = window.location.href.split('?')[0]; // Obtener la URL base sin parámetros
+  window.history.pushState({}, '', url + '?especialidad=' + encodeURIComponent(especialidad));
 }
 
 
-  const slider = document.querySelector('.slider');
-  const sliderBtns = document.querySelectorAll('.slider-btn');
+function mostrarCitas(especialidad) {
+  window.location.href = 'citaMedica.php?especialidad=' + encodeURIComponent(especialidad);
+}
 
-  sliderBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetSlide = document.querySelector(`.${btn.classList[1]}`);
-      slider.scrollTo({
-        left: targetSlide.offsetLeft,
-        behavior: 'smooth'
-      });
-
-      sliderBtns.forEach(btn => btn.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
+// Al cargar la página, mostrar las citas según el filtro de especialidad actual
+window.onload = function() {
+  filtrarCitasPorEspecialidad();
+};
 
 
-  //MostrarCitas 
-  function mostrarCitas() {
-    var xhr = new XMLHttpRequest();
-    var url = 'obtenercitas.php';
-  
-    xhr.open('GET', url, true);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          document.getElementById('lista-citas').innerHTML = xhr.responseText;
-        } else {
-          console.log('Error al cargar las citas.');
-        }
-      }
-    };
-    xhr.send();
-  }
-  
