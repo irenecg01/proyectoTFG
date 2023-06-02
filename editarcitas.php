@@ -24,5 +24,6 @@ if (isset($_POST['citaId'])) {
         // La cita no existe o no se encontró, mostrar un mensaje de error o redirigir a otra página
         echo "La cita no existe.";
       }
+    }
 $conn->close();
 ?>

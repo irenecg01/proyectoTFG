@@ -43,20 +43,22 @@ function obtenerHoraActual() {
   return hora;
 }
 
-// Obtener el horario según la hora
 function obtenerHorarioSegunHora(hora) {
   if (hora >= 5 && hora < 12) {
     return 'mañana';
-  } else if (hora >= 12 && hora < 15) {
-    return 'mediodia';
-  } else if (hora >= 15 && hora < 18) {
+  } else if (hora >= 12 && hora < 13) {
+    return 'mediodía';
+  } else if (hora >= 13 && hora < 15) {
     return 'almuerzo';
-  } else if (hora >= 18 && hora < 21) {
+  } else if (hora >= 15 && hora < 18) {
     return 'merienda';
-  } else {
+  } else if (hora >= 18 && hora < 21) {
     return 'cena';
+  } else {
+    return 'noche';
   }
 }
+
 
 // Mostrar los medicamentos según el horario actual
 function mostrarMedicamentosSegunHoraActual() {
@@ -121,7 +123,7 @@ function mostrarMedicamentos(horario) {
 
           var h3Nombre = document.createElement('h3');
           h3Nombre.classList.add('medicamento__nombre');
-          h3Nombre.textContent = medicamento.nombre;
+          //h3Nombre.textContent = medicamento.nombre;
 
           var buttonVerMas = document.createElement('button');
           buttonVerMas.classList.add('ver-mas-btn');
@@ -145,13 +147,27 @@ function mostrarMedicamentos(horario) {
           
             Swal.fire({
               html: '<h3>' + medicamento.nombre + '</h3>' +
-                    '<p>' + medicamento.descripcion + '</p>' +
-                    '<p>Tomar entre las ' + horaFormateada + ' y las ' + horaFin + '</p>',
+                '<p>' + medicamento.descripcion + '</p>' +
+                '<p>Tomar entre las ' + horaFormateada + ' y las ' + horaFin + '</p>' +
+                '<div class="checkbox-container">' +
+                '<label><input type="checkbox" id="checkMedicacion"> Si te la has tomado marcala </label>' +
+                '</div>',
               icon: 'info',
-              confirmButtonText: 'Cerrar'
+              confirmButtonText: 'Cerrar',
+              onOpen: function () {
+                // Obtener el elemento del checkbox
+                var checkbox = document.getElementById('checkMedicacion');
+                // Agregar un evento para escuchar el cambio en el estado del checkbox
+                checkbox.addEventListener('change', function () {
+                  if (checkbox.checked) {
+                    // Si el checkbox está marcado, mostrar un mensaje de confirmación
+                    Swal.fire('Medicación tomada', 'Has marcado la medicación como tomada', 'success');
+                  }
+                });
+              }
             });
+
           });
-          
 
           divMedicamento.appendChild(imgMedicamento);
           divMedicamento.appendChild(h3Nombre);

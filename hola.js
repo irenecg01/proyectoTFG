@@ -1,5 +1,3 @@
-var filtroEspecialidad = 'todos';
-
 // Función para abrir el modal de agregar
 function abrirModalAgregar(tipo) {
   var modal = document.getElementById("modalAgregar");
@@ -89,29 +87,29 @@ var botonesEspecialidad = document.getElementsByClassName("especialidad-btn");
 
 // Asignar el evento click a cada botón de especialidad
 for (var i = 0; i < botonesEspecialidad.length; i++) {
-  botonesEspecialidad[i].addEventListener("click", filtrarCitasPorEspecialidad);
-}
-function filtrarCitasPorEspecialidad(especialidad) {
-  // Mostrar solo las citas de la especialidad seleccionada
-  var citas = document.getElementsByClassName("cita");
-  for (var i = 0; i < citas.length; i++) {
-    var citaEspecialidad = citas[i].querySelector(".cita__especialidad").textContent.trim();
-
-    if (citaEspecialidad === especialidad || especialidad === 'todos') {
-      citas[i].style.display = "block";
-    } else {
-      citas[i].style.display = "none";
-    }
-  }
-
-  // Actualizar la URL con el parámetro especialidad
-  var url = window.location.href.split('?')[0]; // Obtener la URL base sin parámetros
-  window.history.pushState({}, '', url + '?especialidad=' + encodeURIComponent(especialidad));
+  asignarEventoEspecialidad(botonesEspecialidad[i]);
 }
 
+// Función para asignar el evento click a un botón de especialidad
+function asignarEventoEspecialidad(botonEspecialidad) {
+  // Obtener el texto de la especialidad
+  var especialidadTexto = botonEspecialidad.textContent;
+  var especialidadMayusculas = especialidadTexto.toUpperCase();
 
+  // Establecer el texto en mayúsculas y más grande en el botón de especialidad
+  botonEspecialidad.textContent = especialidadMayusculas;
+  botonEspecialidad.style.fontSize = "0.8em";
+
+  // Asignar el evento click con la especialidad
+  botonEspecialidad.addEventListener("click", function() {
+    var especialidad = this.textContent;
+    mostrarCitas(especialidad);
+  });
+}
+// Función para mostrar las citas según la especialidad
 function mostrarCitas(especialidad) {
-  window.location.href = 'citaMedica.php?especialidad=' + encodeURIComponent(especialidad);
+  var especialidadFiltrada = especialidad.toLowerCase();
+  window.location.href = 'citaMedica.php?especialidad=' + encodeURIComponent(especialidadFiltrada);
 }
 
 // Al cargar la página, mostrar las citas según el filtro de especialidad actual
@@ -119,4 +117,25 @@ window.onload = function() {
   filtrarCitasPorEspecialidad();
 };
 
+function filtrarCitasPorEspecialidad() {
+  // Obtener el parámetro de especialidad de la URL
+  var urlParams = new URLSearchParams(window.location.search);
+  var especialidad = urlParams.get('especialidad');
 
+  // Obtener todos los botones de especialidad
+  var botonesEspecialidad = document.getElementsByClassName("especialidad-btn");
+
+  // Iterar sobre los botones de especialidad
+  for (var i = 0; i < botonesEspecialidad.length; i++) {
+    var botonEspecialidad = botonesEspecialidad[i];
+    var especialidadTexto = botonEspecialidad.textContent.toLowerCase();
+
+    
+  }
+}
+
+
+// Al cargar la página, mostrar las citas según el filtro de especialidad actual
+window.onload = function() {
+  filtrarCitasPorEspecialidad();
+};

@@ -37,43 +37,41 @@
   </div>
 
   <!-- Modal de Agregar Cita -->
-  <div id="modalAgregar" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="cerrarModalCitas()">&times;</span>
-      <h2>Agregar Cita</h2>
-      <form action="guardarcita.php" method="POST" class="formulario__login" enctype="multipart/form-data">
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required>
-        <br>
-        <label for="hora">Hora:</label>
-        <input type="time" id="hora" name="hora" required>
-        <br>
-        <label for="especialidad">Especialidad:</label>
-        <input list="opciones" name="especialidad" id="especialidad" required>
-        <datalist id="opciones">
+<div id="modalAgregar" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModalCitas()">&times;</span>
+    <h2>Agregar Cita</h2>
+    <form action="guardarcita.php" method="POST" class="formulario__login" enctype="multipart/form-data">
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required>
+      <br>
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" required>
+      <br>
+      <label for="especialidad">Especialidad:</label>
+      <input list="opciones" name="especialidad" id="especialidad" required>
+      <datalist id="opciones">
         <option value="Cardiología">
-        <option value="Traumatología ">
+        <option value="Traumatología">
         <option value="Endocrinología">
         <option value="Oncología">
         <option value="Endocrinología">  
-     
-</datalist>
-</div>
-        <br>
-        <label for="lugar">Lugar:</label>
-        <input type="text" id="lugar" name="lugar" required>
-        <br>
-        <label for="motivo">Motivo:</label>
-        <input type="text" id="motivo" name="motivo" required>
-        <br>
-        <label for="comentario">Comentario:</label>
-        <input type="text" id="comentario" name="comentario">
-        <br>
-        <br>
-        <button type="submit">Agregar</button>
-      </form>
-    </div>
+      </datalist>
+      <br>
+      <label for="lugar">Lugar:</label>
+      <input type="text" id="lugar" name="lugar" required>
+      <br>
+      <label for="motivo">Motivo:</label>
+      <input type="text" id="motivo" name="motivo" required>
+      <br>
+      <label for="comentario">Comentario:</label>
+      <input type="text" id="comentario" name="comentario">
+      <br>
+      <br>
+      <button type="submit">Agregar</button>
+    </form>
   </div>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   

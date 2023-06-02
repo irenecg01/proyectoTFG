@@ -15,7 +15,7 @@ $result = $stmt->get_result();
 // Genera el HTML para mostrar los medicamentos
 $html = '<ul>';
 while ($row = $result->fetch_assoc()) {
-    $html .= '<li>' . $row['nombre'] . '</li>';
+   $html .= '<li>' . $row['nombre'] . '</li>';
 }
 $html .= '</ul>';
 
