@@ -26,6 +26,32 @@
       ?>
   </div>
 </div>
+<!-- Formulario de Edición -->
+<div id="formulario-edicion" style="display: none;">
+  <h2>Editar Cita</h2>
+  <form id="form-edicion" class="formulario__login">
+    <label for="nuevo-fecha">Fecha:</label>
+    <input type="date" id="nuevo-fecha" name="nuevo-fecha" required>
+    <br>
+    <label for="nuevo-hora">Hora:</label>
+    <input type="time" id="nuevo-hora" name="nuevo-hora" required>
+    <br>
+    <label for="nuevo-especialidad">Especialidad:</label>
+    <input type="text" id="nuevo-especialidad" name="nuevo-especialidad" required>
+    <br>
+    <label for="nuevo-lugar">Lugar:</label>
+    <input type="text" id="nuevo-lugar" name="nuevo-lugar" required>
+    <br>
+    <label for="nuevo-motivo">Motivo:</label>
+    <input type="text" id="nuevo-motivo" name="nuevo-motivo" required>
+    <br>
+    <label for="nuevo-comentario">Comentario:</label>
+    <input type="text" id="nuevo-comentario" name="nuevo-comentario">
+    <br>
+    <br>
+    <button id="btn-guardar" type="button">Guardar</button>
+  </form>
+</div>
 
 
   <!-- Botón de Agregar Cita -->

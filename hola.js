@@ -25,6 +25,7 @@ function mostrarBotones() {
   }
 }
 
+
 // Agregar evento click a los botones de borrar
 var botonesBorrar = document.getElementsByClassName("borrar-btn");
 for (var i = 0; i < botonesBorrar.length; i++) {
@@ -130,12 +131,93 @@ function filtrarCitasPorEspecialidad() {
     var botonEspecialidad = botonesEspecialidad[i];
     var especialidadTexto = botonEspecialidad.textContent.toLowerCase();
 
-    
+    if (especialidadTexto === especialidad) {
+      // Resaltar el botón de la especialidad actual
+      botonEspecialidad.classList.add("active");
+    } else {
+      // Quitar el resaltado de los demás botones de especialidad
+      botonEspecialidad.classList.remove("active");
+    }
   }
 }
-
 
 // Al cargar la página, mostrar las citas según el filtro de especialidad actual
 window.onload = function() {
   filtrarCitasPorEspecialidad();
 };
+
+
+// Agregar evento click a los botones de editar
+var botonesEditar = document.getElementsByClassName("editar-btn");
+for (var i = 0; i < botonesEditar.length; i++) {
+  botonesEditar[i].addEventListener("click", mostrarFormularioEdicion.bind(botonesEditar[i]));
+}
+
+function mostrarFormularioEdicion() {
+  var citaId = this.getAttribute("data-cita-id");
+  var fecha = this.getAttribute("data-fecha");
+  var hora = this.getAttribute("data-hora");
+  var especialidad = this.getAttribute("data-especialidad");
+  var lugar = this.getAttribute("data-lugar");
+  var motivo = this.getAttribute("data-motivo");
+  var comentario = this.getAttribute("data-comentario");
+
+  // Mostrar el formulario de edición
+  var formularioEdicion = document.getElementById("formulario-edicion");
+  formularioEdicion.style.display = "block";
+
+  // Establecer los valores en los campos del formulario de edición
+  document.getElementById("nuevo-fecha").value = fecha;
+  document.getElementById("nuevo-hora").value = hora;
+  document.getElementById("nuevo-especialidad").value = especialidad;
+  document.getElementById("nuevo-lugar").value = lugar;
+  document.getElementById("nuevo-motivo").value = motivo;
+  document.getElementById("nuevo-comentario").value = comentario;
+
+  var btnGuardar = document.getElementById("btn-guardar");
+  btnGuardar.setAttribute("data-cita-id", citaId); // Establecer el ID de la cita en el botón de guardar
+
+  btnGuardar.addEventListener("click", function() {
+    guardarEdicionCita(citaId);
+  });
+}
+
+function guardarEdicionCita(citaId) {
+  var nuevaFecha = document.getElementById("nuevo-fecha").value;
+  var nuevaHora = document.getElementById("nuevo-hora").value;
+  var nuevaEspecialidad = document.getElementById("nuevo-especialidad").value;
+  var nuevoLugar = document.getElementById("nuevo-lugar").value;
+  var nuevoMotivo = document.getElementById("nuevo-motivo").value;
+  var nuevoComentario = document.getElementById("nuevo-comentario").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Analizar la respuesta JSON
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          // Cita editada exitosamente
+          console.log("La cita con ID " + citaId + " se ha editado correctamente.");
+
+          // Ocultar el formulario de edición
+          var formularioEdicion = document.getElementById("formulario-edicion");
+          formularioEdicion.style.display = "none";
+
+          // Actualizar la lista de citas con los cambios realizados
+          obtenerListaCitas();
+        } else {
+          // Error al editar la cita
+          console.error("Error al editar la cita con ID " + citaId + ": " + response.message);
+        }
+      } else {
+        // Error de solicitud
+        console.error("Error al realizar la solicitud: " + xhr.status);
+      }
+    }
+  };
+
+  xhr.open("POST", "editar_cita.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("citaId=" + citaId + "&fecha=" + nuevaFecha + "&hora=" + nuevaHora + "&especialidad=" + nuevaEspecialidad + "&lugar=" + nuevoLugar + "&motivo=" + nuevoMotivo + "&comentario=" + nuevoComentario);
+}

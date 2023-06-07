@@ -22,7 +22,7 @@
 <!-- Lista de medicamentos -->
 
 
-<div id="lista_medicamentos"></div>
+<div id="lista_medicamentos" class="slider"></div>
 
 
 <!-- Botón que abre el modal -->

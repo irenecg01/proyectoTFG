@@ -10,7 +10,6 @@ function cerrarModal() {
   modal.style.display = "none";
 }
 
-// Función para mostrar los medicamentos
 function mostrarMedicamentos(horario) {
   var xhr = new XMLHttpRequest();
   var url = 'obtenermedicamentos.php';
@@ -25,6 +24,14 @@ function mostrarMedicamentos(horario) {
       if (xhr.status === 200) {
         document.getElementById('lista_medicamentos').innerHTML = xhr.responseText;
         asignarEventosVerMas();
+        
+        // Inicializar el carrusel después de agregar los elementos de los medicamentos
+        $('.slider').slick({
+          slidesToShow: 3, // Número de elementos a mostrar en cada slide
+          slidesToScroll: 1, // Número de elementos a desplazar por slide
+          autoplay: true, // Activar el autoplay del carrusel
+          autoplaySpeed: 2000 // Velocidad de desplazamiento automático en milisegundos
+        });
       } else {
         console.log('Error al cargar los medicamentos.');
       }
@@ -32,7 +39,6 @@ function mostrarMedicamentos(horario) {
   };
   xhr.send();
 }
-
 // Llamar a la función para mostrar todos los medicamentos al cargar la página
 mostrarMedicamentos('todos');
 
@@ -135,7 +141,7 @@ function mostrarMedicamentos(horario) {
             var [horaInicio, horaFin] = horaReal.split(' - '); // Divide el rango en hora de inicio y hora de fin
           
             var horaInicioParts = horaInicio.split(':'); // Divide la hora de inicio en horas y minutos
-            var horaFinParts = horaFin.split(':'); // Divide la hora de fin en horas y minutos
+           /// var horaFinParts = horaFin.split(':'); // Divide la hora de fin en horas y minutos
           
             var hora = new Date(); // Crea una nueva instancia de Date
           
